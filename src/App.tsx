@@ -1,16 +1,15 @@
 import { Button } from "./components/ui/Button";
-import { Card } from "./components/ui/Card";
+import { Input } from "./components/ui/Input";
 
 export default function App() {
-    return( <>
+    return( 
+    <div className="max-w-7xl mx-auto p-4">
         <h1 className="text-3xl font-bold underline"></h1>
             Hello world!
         <Button variant="hollow" size="lg">
             Add Vehicle
         </Button>
-        <Card>
-            <h1>This is a card component</h1>
-        </Card>
-        </>
+        <Input label="Vehicle Make" placeholder="Enter vehicle make" buttonType="primary" buttonText="Add Vehicle"></Input>
+    </div>
     )
 }
