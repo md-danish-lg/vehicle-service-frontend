@@ -1,3 +1,4 @@
+import { Badge } from "./components/ui/Badge";
 import { Button } from "./components/ui/Button";
 import { Input } from "./components/ui/Input";
 
@@ -10,6 +11,10 @@ export default function App() {
             Add Vehicle
         </Button>
         <Input label="Vehicle Make" placeholder="Enter vehicle make" buttonType="primary" buttonText="Add Vehicle"></Input>
+       
+        <Badge variant="success" size="md" className="ml-2">
+            Success
+        </Badge>
     </div>
     )
 }
