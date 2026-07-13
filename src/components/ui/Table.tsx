@@ -24,7 +24,8 @@ export function Table({data}: TableProps) {
         </Card>
     )
     return(
-        <Card className="">
+        <Card className="w-full">
+            
             <div>
                 {tableItems}
             </div>
