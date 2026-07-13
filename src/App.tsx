@@ -4,12 +4,35 @@ import { Button } from "./components/ui/Button";
 import { Input } from "./components/ui/Input";
 import { Modal } from "./components/ui/Modal";
 import { X } from "lucide-react";
+import { Table } from "./components/ui/Table";
 
 export default function App() {
     const [isOpen, setIsOpen] = useState(false);
 
+    const tableData = [{
+        id:1,
+        name: "John Doe",
+        phone:"+92 317792481",
+        email: "dsadf@gmail.com",
+        vehicles: 2
+    }, {
+        id:2,
+        name: "John Doe",
+        phone:"+92 317792481",
+        email: "dsadf@gmail.com",
+        vehicles: 2
+    }
+];
+
     return( 
+
     <div className="max-w-7xl mx-auto p-4">
+        <Table data={tableData}>
+            <Button variant="hollow" size="sm">
+                Edit
+            </Button>
+        </Table>
+
         <h1 className="text-3xl font-bold underline"></h1>
             Hello world!
         <Button variant="hollow" size="lg" onClick={() => setIsOpen(true)}>
