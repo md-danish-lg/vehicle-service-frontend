@@ -1,10 +1,17 @@
 
+export type ServiceItem = {
+  id: number;
+  description: string;
+  laborCost: number;
+};
+
 export type WorkOrder = {
   id: number;
-  status: "CREATED" | "COMPLETED" | "IN_PROGRESS" | "ASSIGNED";
+  status: "CREATED" | "ASSIGNED" | "IN_PROGRESS" | "COMPLETED";
+  notes: string;
   createdAt: string;
-  mechanic: string;
-  items: number;
+  completedAt: string | null;
+  serviceItemList: ServiceItem[];
 };
 
 export type Vehicle = {

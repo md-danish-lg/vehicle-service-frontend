@@ -2,8 +2,9 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 import { Breadcrumb } from "../../components/ui/Breadcrumb";
-import type { Vehicle } from "../features/vehicles/types";
+import { type WorkOrder, type Vehicle } from "../features/vehicles/types";
 import { VehicleHeader } from "../features/VehicleHeader";
+import { ServiceHistoryTable } from "./ServiceHistoryTable";
 
 
 export function VehicleDetail() {
@@ -11,15 +12,25 @@ export function VehicleDetail() {
 
   const [vehicle, setVehicle] = useState<Vehicle | null>(null);
   const [loading, setLoading] = useState(true);
+  const [workOrders, setWorkOrders] = useState<WorkOrder[]>([]);
 
-  useEffect(() => {
-    fetch(`http://localhost:8080/api/v1/vehicles/${id}`)
-      .then((res) => res.json())
-      .then((data) => {
-        setVehicle(data);
+    useEffect(() => {
+    async function loadVehicle() {
+        const [vehicleRes, historyRes] = await Promise.all([
+        fetch(`http://localhost:8080/api/v1/vehicles/${id}`),
+        fetch(`http://localhost:8080/api/v1/vehicles/${id}/history`),
+        ]);
+
+        const vehicle = await vehicleRes.json();
+        const history = await historyRes.json();
+
+        setVehicle(vehicle);
+        setWorkOrders(history);
         setLoading(false);
-      });
-  }, [id]);
+    }
+
+    loadVehicle();
+    }, [id]);
 
   if (loading) {
     return (
@@ -44,6 +55,10 @@ export function VehicleDetail() {
       />
 
       <VehicleHeader vehicle={vehicle} />
+
+      <ServiceHistoryTable
+            workOrders={workOrders}
+        />
 
 
     </div>
