@@ -3,53 +3,22 @@ import { Button } from "../ui/Button";
 import { CustomerTable } from "../ui/CustomerTable";
 import { useState } from "react";
 import { Pagination } from "../ui/Pagination";
+import { useEffect } from "react";
 
 const ITEMS_PER_PAGE = 5
 export function CustomerList(){
-    const customers = [
-        {
-            id: 1,
-            name: "John Doe",
-            phone: "+1 555-1234",
-            email: "john@example.com",
-            vehicles: 2,
-        },
-        {
-            id: 2,
-            name: "Sarah Smith",
-            phone: "+1 555-6789",
-            email: "sarah@example.com",
-            vehicles: 1,
-        },
-        {
-            id: 3,
-            name: "Michael Brown",
-            phone: "+1 555-9876",
-            email: "michael@example.com",
-            vehicles: 4,
-        },
-        {
-            id: 4,
-            name: "Michael Brown",
-            phone: "+1 555-9876",
-            email: "michael@example.com",
-            vehicles: 4,
-        },
-        {
-            id: 5,
-            name: "Michael Brown",
-            phone: "+1 555-9876",
-            email: "michael@example.com",
-            vehicles: 4,
-        },
-        {
-            id: 6,
-            name: "Michael Brown",
-            phone: "+1 555-9876",
-            email: "michael@example.com",
-            vehicles: 4,
-        },
-        ];
+    const [customers, setCustomers] = useState([]);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        fetch("http://localhost:8080/api/v1/customers")
+            .then(res => res.json())
+            .then(data => {
+                setCustomers(data);
+                setLoading(false);
+            })
+            .catch(err => console.error(err));
+    }, []);
 
 
         const [currentPage, setCurrentPage] = useState(1);
