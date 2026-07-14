@@ -38,7 +38,7 @@ export function VehicleDetail() {
       <Breadcrumb
         items={[
           { label: "Customers", href: "/" },
-          { label: vehicle.customerName },
+          { label: "Vehicle history" },
           { label: `${vehicle.make} ${vehicle.model}` },
         ]}
       />
