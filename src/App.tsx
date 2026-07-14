@@ -9,6 +9,7 @@ import { CustomerList } from "./components/screen/CustomerList";
 import { Route, Routes } from "react-router-dom";
 import { CustomerDetail } from "./components/screen/CustomerDetail";
 import { VehicleDetail } from "./components/screen/VehicleDetail";
+import { WorkOrderDetail } from "./components/screen/WorkOrderDetail";
 
 
 export default function App() {
@@ -21,6 +22,7 @@ export default function App() {
                 <Route path="/" element={<CustomerList />} />
                 <Route path="/customers/:id" element={<CustomerDetail />} />
                 <Route path="/vehicles/:id" element={<VehicleDetail />} />
+                <Route path="/work-orders/:id" element={<WorkOrderDetail />} />
 
 
             </Routes>
