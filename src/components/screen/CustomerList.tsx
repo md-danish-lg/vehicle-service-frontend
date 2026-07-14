@@ -1,21 +1,65 @@
 import { Plus } from "lucide-react";
 import { Button } from "../ui/Button";
-import { Table } from "../ui/Table";
+import { CustomerTable } from "../ui/CustomerTable";
+import { useState } from "react";
+import { Pagination } from "../ui/Pagination";
 
+const ITEMS_PER_PAGE = 5
 export function CustomerList(){
-    const tableData = [{
-        id:1,
-        name: "John Doe",
-        phone:"+92 317792481",
-        email: "dsadf@gmail.com",
-        vehicles: 2
-    }, {
-        id:2,
-        name: "John Doe",
-        phone:"+92 317792481",
-        email: "dsadf@gmail.com",
-        vehicles: 2
-    }];
+    const customers = [
+        {
+            id: 1,
+            name: "John Doe",
+            phone: "+1 555-1234",
+            email: "john@example.com",
+            vehicles: 2,
+        },
+        {
+            id: 2,
+            name: "Sarah Smith",
+            phone: "+1 555-6789",
+            email: "sarah@example.com",
+            vehicles: 1,
+        },
+        {
+            id: 3,
+            name: "Michael Brown",
+            phone: "+1 555-9876",
+            email: "michael@example.com",
+            vehicles: 4,
+        },
+        {
+            id: 4,
+            name: "Michael Brown",
+            phone: "+1 555-9876",
+            email: "michael@example.com",
+            vehicles: 4,
+        },
+        {
+            id: 5,
+            name: "Michael Brown",
+            phone: "+1 555-9876",
+            email: "michael@example.com",
+            vehicles: 4,
+        },
+        {
+            id: 6,
+            name: "Michael Brown",
+            phone: "+1 555-9876",
+            email: "michael@example.com",
+            vehicles: 4,
+        },
+        ];
+
+
+        const [currentPage, setCurrentPage] = useState(1);
+
+        const start = (currentPage - 1 ) * ITEMS_PER_PAGE;
+        const end = start + ITEMS_PER_PAGE;
+
+        const paginatedCustomers = customers.slice(start, end);
+
+        
 
     return (
         <>
@@ -27,7 +71,12 @@ export function CustomerList(){
                         <Plus />Add Customer</Button>
                 </div>
 
-                <Table data={tableData}></Table>
+                <CustomerTable customers={paginatedCustomers}></CustomerTable>
+                <Pagination
+                        currentPage={currentPage}
+                        totalPages={Math.ceil(customers.length / ITEMS_PER_PAGE)}
+                        onPageChange={setCurrentPage}
+      />
             </div>        
         </>
     )
