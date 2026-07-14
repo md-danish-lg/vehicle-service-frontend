@@ -7,7 +7,7 @@ import { CarFrontIcon, Mail, Phone, Plus } from "lucide-react";
 import { Button } from "../ui/Button";
 import { useState, useEffect } from "react";
 
-type Vehicle = {
+export type Vehicle = {
     id: number;
     make: string;
     model: string;
