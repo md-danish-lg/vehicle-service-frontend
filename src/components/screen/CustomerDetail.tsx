@@ -104,6 +104,12 @@ export function CustomerDetail(){
             </div>
         )
 
+    }else{
+        return(
+            <div className="w-full h-full flex items-center justify-center fixed m-auto">
+                <span className="loader "></span>
+            </div>
+        )
     }
     
 
