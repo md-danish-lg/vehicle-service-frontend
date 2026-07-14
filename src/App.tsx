@@ -7,6 +7,7 @@ import { X } from "lucide-react";
 import { Sidebar } from "./components/screen/Sidebar";
 import { CustomerList } from "./components/screen/CustomerList";
 import { Route, Routes } from "react-router-dom";
+import { CustomerDetail } from "./components/screen/CustomerDetail";
 
 
 export default function App() {
@@ -17,7 +18,7 @@ export default function App() {
             <Sidebar />
             <Routes>
                 <Route path="/" element={<CustomerList />} />
-                
+                <Route path="/customers/:id" element={<CustomerDetail />} />
                 
 
 
