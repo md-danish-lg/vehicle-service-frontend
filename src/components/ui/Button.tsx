@@ -53,7 +53,7 @@ function getVariantStyles(variant: Variant) {
         case 'danger':
             return 'bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded';
         case 'outline':
-            return 'bg-transparent hover:bg-gray-200 border border-slate-700 text-slate-200 font-bold py-2 px-4 rounded';
+            return 'bg-transparent hover:bg-gray-200 hover:text-black border border-slate-700 text-slate-200 font-bold py-2 px-4 rounded';
         case 'hollow':
             return 'bg-transparent border border-amber-500 text-amber-500 hover:bg-amber-500/10 font-bold py-2 px-4 rounded';
         default:
